@@ -1,17 +1,38 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Live Search</title>
+    <title>Movie List</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="search-container">
-        <input type="text" id="search-input" placeholder="Search movies, actors, TV shows..." autocomplete="off">
-        <div id="search-results" class="hidden"></div>
-        <div id="search-history"></div>
-    </div>
-    <script src="script.js"></script>
+    <h1>Popular Movies</h1>
+    <div id="movies" class="movie-container"></div>
+    
+    <script>
+        const API_KEY = 'YOUR_TMDB_API_KEY';
+        const BASE_URL = 'https://api.themoviedb.org/3/movie/popular?api_key=' + API_KEY;
+
+        async function fetchMovies() {
+            const response = await fetch(BASE_URL);
+            const data = await response.json();
+            displayMovies(data.results);
+        }
+
+        function displayMovies(movies) {
+            const movieContainer = document.getElementById('movies');
+            movieContainer.innerHTML = movies.map(movie => `
+                <div class="movie">
+                    <img src="https://image.tmdb.org/t/p/w200${movie.poster_path}" alt="${movie.title}">
+                    <h3>${movie.title}</h3>
+                </div>
+            `).join('');
+        }
+
+        fetchMovies();
+    </script>
 </body>
 </html>
