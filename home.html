@@ -1,38 +1,15 @@
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Movie List</title>
+    <title>Actors List</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <h1>Popular Movies</h1>
-    <div id="movies" class="movie-container"></div>
-    
-    <script>
-        const API_KEY = 'YOUR_TMDB_API_KEY';
-        const BASE_URL = 'https://api.themoviedb.org/3/movie/popular?api_key=' + API_KEY;
-
-        async function fetchMovies() {
-            const response = await fetch(BASE_URL);
-            const data = await response.json();
-            displayMovies(data.results);
-        }
-
-        function displayMovies(movies) {
-            const movieContainer = document.getElementById('movies');
-            movieContainer.innerHTML = movies.map(movie => `
-                <div class="movie">
-                    <img src="https://image.tmdb.org/t/p/w200${movie.poster_path}" alt="${movie.title}">
-                    <h3>${movie.title}</h3>
-                </div>
-            `).join('');
-        }
-
-        fetchMovies();
-    </script>
+    <h1>Actors</h1>
+    <div id="actors-container"></div>
+    <a href="favorites.html" class="fav-link">View Favorites</a>
+    <script src="script.js"></script>
 </body>
 </html>
