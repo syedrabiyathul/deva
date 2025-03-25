@@ -3,13 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Actors List</title>
+    <title>Live Search</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <h1>Actors</h1>
-    <div id="actors-container"></div>
-    <a href="favorites.html" class="fav-link">View Favorites</a>
+    <div class="search-container">
+        <input type="text" id="search-input" placeholder="Search movies, actors, TV shows..." autocomplete="off">
+        <div id="search-results" class="hidden"></div>
+        <div id="search-history"></div>
+    </div>
     <script src="script.js"></script>
 </body>
 </html>

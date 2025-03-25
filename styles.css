@@ -1,58 +1,63 @@
 body {
     font-family: Arial, sans-serif;
-    text-align: center;
     background: #121212;
     color: white;
-}
-
-h1 {
-    margin-bottom: 20px;
-}
-
-#actors-container, #favorites-container {
     display: flex;
-    flex-wrap: wrap;
     justify-content: center;
+    align-items: center;
+    height: 100vh;
 }
 
-.actor-card {
-    width: 200px;
-    margin: 10px;
-    padding: 10px;
-    background: #1e1e1e;
-    border-radius: 8px;
-    text-align: center;
+.search-container {
+    width: 400px;
     position: relative;
-    transition: transform 0.2s ease-in-out;
 }
 
-.actor-card:hover {
-    transform: scale(1.05);
-}
-
-.actor-card img {
+#search-input {
     width: 100%;
-    border-radius: 8px;
+    padding: 10px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    outline: none;
 }
 
-.heart-icon {
+#search-results, #search-history {
     position: absolute;
-    top: 10px;
-    right: 10px;
-    font-size: 24px;
+    width: 100%;
+    background: #1e1e1e;
+    border-radius: 5px;
+    margin-top: 5px;
+    display: none;
+    overflow: hidden;
+}
+
+.search-item {
+    padding: 10px;
     cursor: pointer;
-    transition: transform 0.3s ease-in-out;
+    transition: all 0.3s;
 }
 
-.heart-icon.favorited {
-    color: red;
-    transform: scale(1.2);
+.search-item:hover, .selected {
+    background: #333;
 }
 
-.fav-link {
-    display: block;
-    margin-top: 20px;
-    font-size: 18px;
-    text-decoration: none;
-    color: yellow;
+.category {
+    font-weight: bold;
+    background: #444;
+    padding: 5px;
+}
+
+.hidden {
+    display: none;
+}
+
+/* Smooth animations */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+#search-results div {
+    animation: fadeIn 0.2s ease-in-out;
 }
